@@ -29,7 +29,7 @@ export function ShareButton ({post}: {post: any}) {
             className='bg-slate-800 p-2 rounded-full text-white dark:bg-white dark:text-gray-900'
             >Copiar enlace</button>
             <a
-	href={`https://wa.me/?text=${encodeURIComponent(post.url)}`}
+	href={`https://wa.me/?text=https://impulsocristiano.info${encodeURIComponent(post.url)}`}
 	target="_blank"
 	rel="noopener noreferrer"
     className='bg-green-200 text-green-800 rounded-full p-2'
