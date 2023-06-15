@@ -3,6 +3,7 @@ import BaseLayout from "./Base.astro";
 import YouTube from "../components/YouTube";
 import { getLocaleTime, sortMDByDate } from "src/util";
 import type { Post } from "@/types";
+import { ShareButton } from "../components/ShareButton";
 
 const {
 	content: { title, description, publishDate, tags },

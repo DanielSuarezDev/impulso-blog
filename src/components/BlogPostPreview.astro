@@ -1,6 +1,7 @@
 ---
 import type { IElement, MDXInstance, Post } from "@/types";
 import { getLocaleTime } from "@/util";
+import { ShareButton } from "../components/ShareButton";
 export interface Props extends IElement {
 	post: MDXInstance<Post>;
 	withDesc?: boolean;
@@ -13,7 +14,8 @@ const datetime = date.toISOString();
 const postDate = getLocaleTime(date, { month: "short" });
 ---
 
-<time {datetime} class="min-w-[120px] text-yellow-500">{postDate}</time>
+<time datetime={datetime} class="min-w-[120px] text-yellow-500">{postDate}</time
+>
 <Element>
 	<a href={post.url} class="inline-block cactus-link line-clamp-1">
 		{post.frontmatter.title}
@@ -21,6 +23,9 @@ const postDate = getLocaleTime(date, { month: "short" });
 </Element>
 {
 	withDesc && (
-		<q class="mb-6 block italic line-clamp-3">{post.frontmatter.description}</q>
+		<q class="mb-6 line-clamp-3 block italic">
+			{post.frontmatter.description}
+		</q>
 	)
 }
+<ShareButton client:load post={post} />
