@@ -13,7 +13,11 @@ const date = new Date(publishDate);
 const datetime = date.toISOString();
 const postDate = getLocaleTime(date);
 const url = new URL(Astro.request.url);
-const postId = url.pathname.replace(/\//g, "/");
+let postId = url.pathname.replace(/\//g, "/");
+if (postId.endsWith("/")) {
+	// Si es así, quítala.
+	postId = postId.slice(0, -1);
+}
 
 const allPosts = await Astro.glob<Post>("../pages/blog/*.mdx");
 const allSortedPosts = sortMDByDate(allPosts);
