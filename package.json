@@ -71,6 +71,7 @@
 		"@astrojs/react": "2.2.1",
 		"@astrojs/rss": "2.4.3",
 		"@heroicons/react": "2.0.18",
+		"@vercel/analytics": "^1.0.1",
 		"astro": "2.6.3",
 		"satori": "0.10.1",
 		"satori-html": "0.3.2",

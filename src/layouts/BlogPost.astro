@@ -11,7 +11,7 @@ const {
 const date = new Date(publishDate);
 const datetime = date.toISOString();
 const postDate = getLocaleTime(date);
-const currentPage = new URL(Astro.request.url).pathname;
+const currentPage = new URL(Astro.url.pathname, Astro.site);
 const allPosts = await Astro.glob<Post>("../pages/blog/*.mdx");
 const allSortedPosts = sortMDByDate(allPosts);
 ---
@@ -130,6 +130,7 @@ const allSortedPosts = sortMDByDate(allPosts);
 			</aside>
 		</div>
 	</article>
+	<!-- <ShareButton client:load post={currentPage} /> -->
 </BaseLayout>
 
 <style>
