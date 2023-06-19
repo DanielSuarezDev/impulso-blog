@@ -3,6 +3,7 @@ import type { IElement, MDXInstance, Post } from "@/types";
 import { getLocaleTime } from "@/util";
 import { ShareButton } from "../components/ShareButton";
 import Divider from "./Divider.astro";
+import { Like } from "./Like";
 export interface Props extends IElement {
 	post: MDXInstance<Post>;
 	withDesc?: boolean;
@@ -30,4 +31,5 @@ const postDate = getLocaleTime(date, { month: "short" });
 	)
 }
 <ShareButton client:load post={post} />
+<Like client:load postUrl={post.url} />
 <Divider />

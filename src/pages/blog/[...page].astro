@@ -4,6 +4,7 @@ import BlogPostPreview from "@/components/BlogPostPreview";
 import Pagination from "@/components/Paginator";
 import { getAllTags, sortMDByDate } from "src/util";
 import type { Post, Page, MDXInstance } from "@/types";
+import { Like } from "src/components/Like";
 
 export async function getStaticPaths({ paginate }) {
 	const allPosts = await Astro.glob<Post>("./*.mdx");

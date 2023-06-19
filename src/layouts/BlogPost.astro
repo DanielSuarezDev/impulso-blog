@@ -4,6 +4,7 @@ import YouTube from "../components/YouTube";
 import { getLocaleTime, sortMDByDate } from "src/util";
 import type { Post } from "@/types";
 import { ShareButton } from "../components/ShareButton";
+import { Like } from "src/components/Like";
 
 const {
 	content: { title, description, publishDate, tags },
@@ -11,7 +12,9 @@ const {
 const date = new Date(publishDate);
 const datetime = date.toISOString();
 const postDate = getLocaleTime(date);
-const currentPage = new URL(Astro.url.pathname, Astro.site);
+const url = new URL(Astro.request.url);
+const postId = url.pathname.replace(/\//g, "/");
+
 const allPosts = await Astro.glob<Post>("../pages/blog/*.mdx");
 const allSortedPosts = sortMDByDate(allPosts);
 ---
@@ -128,6 +131,10 @@ const allSortedPosts = sortMDByDate(allPosts);
 					</form>
 				</div>
 			</aside>
+		</div>
+		<div class="flex items-center justify-center mt-8">
+			<p class="mr-3">Dale me gusta</p>
+			<Like client:load postUrl={postId} />
 		</div>
 	</article>
 	<!-- <ShareButton client:load post={currentPage} /> -->
