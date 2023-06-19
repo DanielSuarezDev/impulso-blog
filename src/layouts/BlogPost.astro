@@ -12,12 +12,18 @@ const {
 const date = new Date(publishDate);
 const datetime = date.toISOString();
 const postDate = getLocaleTime(date);
+
 const url = new URL(Astro.request.url);
 let postId = url.pathname.replace(/\//g, "/");
 if (postId.endsWith("/")) {
 	// Si es así, quítala.
 	postId = postId.slice(0, -1);
 }
+const postIdUrl = {
+	url: postId,
+	title,
+	description,
+};
 
 const allPosts = await Astro.glob<Post>("../pages/blog/*.mdx");
 const allSortedPosts = sortMDByDate(allPosts);
@@ -140,6 +146,7 @@ const allSortedPosts = sortMDByDate(allPosts);
 			<p class="mr-3">Dale me gusta</p>
 			<Like client:load postUrl={postId} />
 		</div>
+		<ShareButton client:load post={postIdUrl} />
 	</article>
 	<!-- <ShareButton client:load post={currentPage} /> -->
 </BaseLayout>
