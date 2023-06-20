@@ -18,10 +18,20 @@ const postDate = getLocaleTime(date, { month: "short" });
 
 <time datetime={datetime} class="min-w-[120px] text-yellow-500">{postDate}</time
 >
+{
+	post.frontmatter.hero && (
+		<img
+			src={post.frontmatter.heroImage}
+			alt="external link"
+			class="h-56 w-full"
+		/>
+	)
+}
 <Element class="flex items-center justify-between">
 	<a href={post.url} class="inline-block cactus-link line-clamp-1">
 		{post.frontmatter.title}
 	</a>
+
 	<ShareButton client:load post={post} />
 	<Like client:load postUrl={post.url} />
 </Element>

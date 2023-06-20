@@ -7,7 +7,7 @@ import { ShareButton } from "../components/ShareButton";
 import { Like } from "src/components/Like";
 
 const {
-	content: { title, description, publishDate, tags },
+	content: { title, description, publishDate, tags, heroImage, hero, link },
 } = Astro.props;
 const date = new Date(publishDate);
 const datetime = date.toISOString();
@@ -29,7 +29,7 @@ const allPosts = await Astro.glob<Post>("../pages/blog/*.mdx");
 const allSortedPosts = sortMDByDate(allPosts);
 ---
 
-<BaseLayout meta={{ title, description }}>
+<BaseLayout meta={{ title, description, heroImage, hero, link }}>
 	<article>
 		<h1 class="title mt-8 mb-2">{title}</h1>
 		<div class="flex items-center">
@@ -91,6 +91,17 @@ const allSortedPosts = sortMDByDate(allPosts);
 				class="prose prose-sm prose-cactus prose-headings:font-semibold prose-headings:before:content-['#'] prose-headings:before:text-accent prose-headings:before:absolute prose-headings:before:-ml-4 prose-th:before:content-none"
 			>
 				<slot />
+				{
+					link && (
+						<div class="mb-8 mt-3 rounded-xl bg-blue-200 px-4 py-2 text-blue-700">
+							<p class="text-center text-sm font-medium">
+								<a href={link} target="_blank">
+									🔗 Descargar
+								</a>
+							</p>
+						</div>
+					)
+				}
 			</div>
 			<aside
 				class="invisible hidden text-right sm:sticky sm:top-20 sm:block sm:visible"
