@@ -26,6 +26,18 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 		</div>
 		<SocialList />
 	</section>
+	<div class="mt-6">
+		<h2 class="mb-4 text-xl title">Ultimo podcast:</h2>
+		<iframe
+			style="border-radius:12px"
+			src="https://open.spotify.com/embed/show/0kqcB6xkf5uSXq5DlmS4G4?utm_source=generator"
+			width="100%"
+			height="352"
+			frameBorder="0"
+			allowfullscreen=""
+			allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+			loading="lazy"></iframe>
+	</div>
 	<section aria-label="Blog post list" class="mt-16">
 		<h2 class="mb-4 text-xl title">Lista de blogs</h2>
 		<ul class="space-y-4 sm:space-y-2">
@@ -47,9 +59,9 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 			</a>
 		</span>
 	</section>
-	<section class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 mt-12">
+	<section class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 my-12">
 		<YouTube />
-		<!-- <Conferences /> -->
+		<Conferences />
 	</section>
 	<iframe
 		style="border-radius:12px"

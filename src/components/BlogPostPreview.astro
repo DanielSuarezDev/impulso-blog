@@ -18,10 +18,12 @@ const postDate = getLocaleTime(date, { month: "short" });
 
 <time datetime={datetime} class="min-w-[120px] text-yellow-500">{postDate}</time
 >
-<Element>
+<Element class="flex items-center justify-between">
 	<a href={post.url} class="inline-block cactus-link line-clamp-1">
 		{post.frontmatter.title}
 	</a>
+	<ShareButton client:load post={post} />
+	<Like client:load postUrl={post.url} />
 </Element>
 {
 	withDesc && (
@@ -30,6 +32,4 @@ const postDate = getLocaleTime(date, { month: "short" });
 		</q>
 	)
 }
-<ShareButton client:load post={post} />
-<Like client:load postUrl={post.url} />
 <Divider />
